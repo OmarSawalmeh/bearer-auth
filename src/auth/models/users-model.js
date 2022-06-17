@@ -44,7 +44,12 @@ users.authenticateBearer = async function(token){
         return user;
     }
     else{
-        throw new Error("Invalid Token");
+        // throw new Error("Invalid Token");
+        let invalidToken = {
+            "typeError": "Invalid token",
+            "message": "You are Not authorized to view the secret stuff.",
+          }
+        return invalidToken;
     }
 }
 

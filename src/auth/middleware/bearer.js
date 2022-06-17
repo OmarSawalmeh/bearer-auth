@@ -10,7 +10,12 @@ function bearer(req, res, next){
             req.user = userData;
             next();
         })).catch(() => {
-            next("Invalid Token");
+            let invalidToken = {
+                "typeError": "Invalid token",
+                "message": "You are Not authorized to view the secret stuff.",
+              }
+            req.user = invalidToken;
+            next();
         });
     }
 }

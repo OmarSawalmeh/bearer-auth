@@ -41,10 +41,16 @@ app.post('/signin', basic, async (req, res)=>{
 });
 
 app.get('/secretstuff', bearer, (req, res)=>{
-    res.json({
-        message: 'You are authorized to view the secret stuff.',
-        user: req.user
-      })
+    console.log('---------', req.user)
+    if(req.user.typeError !== "Invalid token"){
+        res.json({
+            message: 'You are authorized to view the secret stuff.',
+            user: req.user
+          });
+    }
+    else{
+        res.json(req.user);
+    }
 });
 
 // Handle error
