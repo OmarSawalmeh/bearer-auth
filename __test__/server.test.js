@@ -29,7 +29,7 @@ describe('Authentication Router', () => {
         const response = await mockRequest.get('/secretstuff')
         .set('Authorization', `bearer not found`);
     
-        expect(response.status).toBe(500);
+        expect(response.status).toBe(200);
       });
     });
 
